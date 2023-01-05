@@ -32,6 +32,8 @@ ROS_BUILDTOOL_EXPORT_DEPENDS = ""
 ROS_EXEC_DEPENDS = " \
     std-srvs \
     tf2 \
+    interactive-marker-twist-server \
+    twist-mux \
 "
 
 # Currently informational only -- see http://www.ros.org/reps/rep-0149.html#dependency-tags.

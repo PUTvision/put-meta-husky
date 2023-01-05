@@ -9,7 +9,7 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD;md5=3775480a712fc46a69647678acb234cb"
 
 ROS_CN = "husky"
-ROS_BPN = "interactive_marker_twist_server"
+ROS_BPN = "interactive-marker-twist-server"
 
 ROS_BUILD_DEPENDS = " \
     geometry-msgs \
