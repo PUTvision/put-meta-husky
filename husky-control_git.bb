@@ -42,9 +42,9 @@ FILES:${PN} += " \
     ${libdir}/lib*${SOLIBSDEV} \
 "
 
-ROS_BRANCH ?= "branch=foxy-devel"
-SRC_URI = "git://github.com/husky/husky;${ROS_BRANCH};protocol=https"
-SRCREV = "ffafe25ae2b4c156e70fd3d84cea9d9aa86081cb"
+ROS_BRANCH ?= "branch=put-foxy"
+SRC_URI = "git://github.com/PPI-PUT/put-husky;${ROS_BRANCH};protocol=https"
+SRCREV = "4305af80fe25b2821d6f671a8f4f573e32b61d01"
 
 S = "${WORKDIR}/git/husky_control"
 
