@@ -60,7 +60,10 @@ FILES:${PN} += " \
 "
 
 ROS_BRANCH ?= "branch=put-foxy"
-SRC_URI = "git://github.com/PPI-PUT/put-husky;${ROS_BRANCH};protocol=https"
+SRC_URI = "git://github.com/PPI-PUT/put-husky;${ROS_BRANCH};protocol=https \
+            file://put-husky-autostart.bash \
+            file://put-husky-autostart.service"
+
 SRCREV = "4305af80fe25b2821d6f671a8f4f573e32b61d01"
 
 S = "${WORKDIR}/git/husky_base"
@@ -70,3 +73,22 @@ ROS_BUILD_TYPE = "ament_cmake"
 
 
 inherit ros_${ROS_BUILD_TYPE}
+
+
+
+inherit systemd
+
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE:${PN} = "put-husky-autostart.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
+
+do_install:append() {
+	install -d ${D}${bindir}
+	install -m 0755 ${WORKDIR}/put-husky-autostart.bash ${D}${bindir}
+
+	install -d ${D}${systemd_system_unitdir}
+	install -m 0644 ${WORKDIR}/put-husky-autostart.service ${D}${systemd_system_unitdir}
+}
+
+FILES:${PN} += "${systemd_system_unitdir}"
+
